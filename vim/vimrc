@@ -149,6 +149,7 @@ set listchars=tab:▸\ ,trail:▫
 set tags=./tags;/ "search tag file from current dir to root
 set showmatch " Hilight matching braces/paren/etc
 set shortmess+=A " Don't bother me when a swapfile exists
+set number
 
 " Make tab completion for files/buffers act like bash
 set wildmenu
