@@ -8,7 +8,6 @@
 "pathoegn
 "execute pathogen#infect()
 "syntax on
-"filetype plugin indent on
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -128,17 +127,17 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set linespace=4
 set ruler             "show line info in status line
 set cursorline        "highlight current line
-set tabstop=2         " default indentation option
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set backspace=indent,eol,start " backspace over pretty much anything
 set autoindent
+set tabstop=4         " default indentation option
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 set autoread                   " auto update file content edited by another program at the same time
 set autowrite                  " Write on :next/:prev/^Z
 set swapfile                   " store tmp file in another place
 set directory^=~/tmp/swap//
 set notitle                    " Don't set the title of the Vim window, pure environment
-set backspace=indent,eol,start " backspace over pretty much anything
 set ignorecase                 " search option
 set incsearch
 set hlsearch
@@ -171,6 +170,9 @@ set nostartofline
 " without this setting, 7.4 is so slow
 set regexpengine=1
 
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType c++ setlocal expandtab shiftwidth=4 softtabstop=4
 
 " http://stackoverflow.com/questions/1005/getting-root-permissions-on-a-file-inside-of-vi
 cmap w!! w !sudo tee >/dev/null %
@@ -299,12 +301,14 @@ let g:tagbar_expand = 1
 let g:tagbar_autoclose = 1
 " auto focus when we open tagbar
 let g:tagbar_autofocus = 1
-nmap \e :TagbarToggle<CR>
+"nmap \e :TagbarToggle<CR>
+nmap <Leader>tt :TagbarToggle<CR>
 
 " nerdtree
 let g:NERDTreeMapJumpNextSibling = '<C-n>'
 let g:NERDTreeMapJumpPrevSibling = '<C-p>'
-nmap \n :NERDTreeToggle<CR>
+"nmap \n :NERDTreeToggle<CR>
+nmap <Leader>e :NERDTreeToggle<CR>
 
 " restore session
 set viewoptions=cursor,folds,slash,unix
